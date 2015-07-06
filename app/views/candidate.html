@@ -1,0 +1,289 @@
+<div class="wrapper">
+
+ <div class="toll-dashboard">
+                  <aside class="left-side">
+                  <nav class="navbar navbar-default navbar-fixed-top">
+                      <div class="user-head">
+                          <a class="inbox-avatar" href="javascript:;">
+                              <img  width="64" hieght="60" src="images/Toll-Group-logo.png">
+                          </a>
+                          <h3>Dashboard</h3>
+
+                      </div>
+                      </nav>
+                      <div class="toll-dashboard-body">
+                          <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-compose">
+                              Add New Candidate
+                          </a>
+
+                      </div>
+                      <ul class="left-side-nav inbox-divider">
+                          <li class="active">
+                              <a href="#"><i class="fa fa-inbox"></i> Candidates List <span class="label label-danger pull-right">20</span></a>
+
+                          </li>
+                          <li>
+                              <a href="#"><i class="fa fa-envelope-o"></i> Resume</a>
+                          </li>
+                          <li>
+                              <a href="#"><i class="fa fa-bookmark-o"></i> Important</a>
+                          </li>
+                          <li>
+                              <a href="#"><i class=" fa fa-external-link"></i> Drafts <span class="label label-info pull-right">30</span></a>
+                          </li>
+                          <li>
+                              <a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
+                          </li>
+                      </ul>
+
+
+                  </aside>
+                  <aside class="right-side">
+                   <nav class="navbar navbar-default navbar-fixed-top">
+                      <div class="inbox-head inbox-head pull-right">
+
+                          <form action="#" class="pull-right position">
+                              <div class="input-append">
+                                  <input type="text" class="sr-input" placeholder="Search Candidate">
+                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                              </div>
+                          </form>
+                      </div>
+                      </nav>
+                      <div class="candidate-list-body">
+
+                          <table class="table table-inbox table-hover">
+                            <tbody>
+                              <tr class="unread" ng-repeat="candidate in candidates">
+                                <a href="#/candidate/{{candidate.id}}">
+								  <td class="inbox-small-cells">
+                                      <input type="checkbox" class="mail-checkbox">
+                                  </td>
+                                  <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
+                                  <td class="view-message  dont-show"><a href="#/candidate/{{candidate.id}}">{{candidate.name}}</a></td>
+                                  <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
+                                  </a>
+                              </tr>
+
+
+                          </tbody>
+                          </table>
+
+                          <!-- Candidate Overview -->
+                          <div ng-if="!isCandidateSelected" class="overview-heading">
+							<legend> Please select a candidate</legend>
+						  </div>
+                          <div ng-if="isCandidateSelected" class="">
+                            <div class="row profile">
+                                <div class="col-md-3">
+                                    <div class="profile-sidebar">
+
+                                        <div class="profile-userpic">
+                                            <img src="{{currentCandidate.img}}" class="img-responsive" alt="lasantha perera">
+                                        </div>
+
+                                        <div class="profile-usertitle">
+                                            <div class="profile-usertitle-name">
+                                                Lasantha Perera
+                                            </div>
+                                            <div class="profile-usertitle-job">
+                                                UI/UX Designer
+                                            </div>
+                                        </div>
+
+                                        <div class="profile-userbuttons">
+                                            <button type="button" class="btn btn-success btn-sm">Follow</button>
+                                            <button type="button" class="btn btn-info btn-sm" onclick="location.href='https://au.linkedin.com/pub/lasantha-perera/42/a35/39a'">Linkedin</button>
+                                        </div>
+
+                                        <div class="profile-usermenu">
+                                            <ul class="nav">
+                                                <li class="active">
+                                                    <a href="#">
+                                                    <i class="glyphicon glyphicon-home"></i>
+                                                    Overview </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                    <i class="glyphicon glyphicon-user"></i>
+                                                    Account Settings </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="#">
+                                                    <i class="glyphicon glyphicon-ok"></i>
+                                                    Tasks </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                    Help </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Form Data -->
+
+                                <div class="col-md-5">
+                                    <div class="profile-content">
+                                       <legend>Overview</legend>
+                                       <form name="candidateDetails" novalidate>
+										   <div class="form-group">
+											  <label class="col-md-4 control-label" for="name">Name</label>
+											  <div class="col-md-8">
+											  <input required id="name" name="name" ng-model="currentCandidate.name" type="text" placeholder="Name" class="form-control input-md" >
+											  <label class=""  ng-show="currentCandidate == {} || candidateDetails.name.$dirty && candidateDetails.name.$error.required">Please enter the name</label>
+											  </div>
+											</div>
+
+											<div class="form-group">
+											  <label class="col-md-4 control-label" for="currently-employed ">Currently employed </label>
+											  <div class="col-md-4">
+												<label class="radio-inline" for="currently-employed -0">
+												  <input type="radio" name="currently-employed " id="currently-employed -0" value="Yes" checked="checked" ng-model="currentCandidate.employed">
+												  Yes
+												</label>
+												<label class="radio-inline" for="currently-employed -1">
+												  <input  type="radio" name="currently-employed " id="currently-employed -1" value="No" ng-model="currentCandidate.employed">
+												  No
+												</label>
+												<label>&nbsp;</label>
+											  </div>
+											  </div>
+
+										   <div class="form-group">
+											  <label class="col-md-4 control-label" for="job-id">Job ID</label>
+											  <div class="col-md-5">
+											  <input class="form-control input-md" ng-model="currentCandidate.jobId" id="job-id" type="text" name="job-id" placeholder="" disabled>
+											  <label>&nbsp;</label>
+											  </div>
+										</div>
+
+										<div class="form-group">
+										  <label class="col-md-4 control-label" for="available-after-date">Available after Date</label>
+										  <div class="col-md-5" id="sandbox-container">
+										  <input required type="text" class="form-control" ng-model="currentCandidate.aaDate" name="aaDate">
+										  <label ng-show="currentCandidate == {} || candidateDetails.aaDate.$dirty && candidateDetails.aaDate.$error.required">Please enter the available after date</label>
+										  </div>
+										</div>
+
+
+										 <div class="form-group">
+										 <label class="col-md-4 control-label" for="job-id">Email</label>
+										<div class="col-md-5">
+											<input required type="email" class="form-control" ng-model="currentCandidate.email" name="email" id="Email" placeholder="Requested Email" required="" value="">
+											<label ng-show="currentCandidate == {} || candidateDetails.email.$dirty && candidateDetails.email.$error.required">Please enter the email</label>
+										</div>
+										</div>
+
+										<div class="form-group">
+										  <label class="col-md-4 control-label" for="address">Address</label>
+										  <div class="col-md-5">
+											<textarea required class="form-control" id="address" ng-model="currentCandidate.address" name="address"></textarea>
+											<label ng-show="currentCandidate == {} || candidateDetails.address.$dirty && candidateDetails.address.$error.required">Please enter the address</label>
+										  </div>
+										</div>
+
+										<div class="form-group">
+										  <label class="col-md-4 control-label" for="state ">State </label>
+										  <div class="col-md-5">
+											<select required id="state" name="state" ng-model="currentCandidate.state" class="form-control">
+											  <option value="VIC">VIC</option>
+											  <option value="QLD">QLD</option>
+											  <option value="TAS">TAS</option>
+											  <option value="WA">WA</option>
+											  <option value="SA">SA</option>
+											  <option value="NSW">NSW</option>
+											</select>
+											<label ng-show="currentCandidate == {} || candidateDetails.state.$dirty && candidateDetails.state.$error.required">Please select the state</label>
+
+										  </div>
+										</div>
+
+										<div class="form-group">
+										  <label class="col-md-4 control-label" for="desired-salary " >Desired salary </label>
+										  <div class="col-md-5">
+										  <input required id="salary" name="salary" ng-model="currentCandidate.salary" type="text" placeholder="Desired salary" class="form-control input-md">
+											<label ng-show="currentCandidate == {}|| candidateDetails.salary.$dirty && candidateDetails.salary.$error.required">Please select the Desired Salary</label>
+										  </div>
+										</div>
+
+										<div class="form-group" ng-if="currentCandidate.employed == 'Yes'">
+										  <label class="col-md-4 control-label" for="current-salary">Current salary</label>
+										  <div class="col-md-5">
+										  <input required  id="cSalary" name="cSalary" ng-model="currentCandidate.cSalary" type="text" placeholder="Current salary" class="form-control input-md">
+											<label ng-show="currentCandidate == {} || candidateDetails.cSalary.$dirty && candidateDetails.cSalary.$error.required">Please select the Current Salary</label>
+										  </div>
+										</div>
+                                    </form>
+									<br/>
+									<div class="form-group">
+										<div class="col-md-5">
+											<button type="button" ng-disabled="candidateDetails.$invalid" class="btn btn-success btn-sm" ng-click="save();">Save</button>
+										</div>
+									</div>
+                                    </div><!--profile-content-->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                      </div> <!-- candidate-list-body -->
+                  </aside>
+              </div>
+</div>
+
+<!-- Modal -->
+                          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                          <h4 class="modal-title">Add New Candidate</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                          <form role="form" class="form-horizontal">
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">Name</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="text" placeholder="" id="inputEmail1" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">Email</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="text" placeholder="" id="Email address" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">Phone</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="text" placeholder="" id="inputPassword1" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">Message</label>
+                                                  <div class="col-lg-10">
+                                                      <textarea rows="10" cols="30" class="form-control" id="" name=""></textarea>
+                                                  </div>
+                                              </div>
+
+                                              <div class="form-group">
+                                                  <div class="col-lg-offset-2 col-lg-10">
+                                                      <span class="btn green fileinput-button">
+                                                        <i class="fa fa-plus fa fa-white"></i>
+                                                        <span>Attachment</span>
+                                                        <input type="file" name="files[]" multiple="">
+                                                      </span>
+                                                      <button class="btn btn-send" type="submit">Send</button>
+                                                  </div>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
