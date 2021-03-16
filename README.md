@@ -1,2 +1,2 @@
-# Toll-UI-Task
-Toll Interview UI-Task - Candidate list
+# UI-Task
+UI-Task - Candidate list
